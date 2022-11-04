@@ -1,0 +1,32 @@
+@model List<Cadeteria.Models.Cadete>
+
+@{
+    ViewData["Title"] = "Lista de cadetes";
+}
+
+<section>
+    <article>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Domicilio</th>
+                    <th>Telefono</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Cadete in @Model)
+                {
+                    <tr>
+                        <td>@Cadete.Id</td>
+                        <td>@Cadete.Nombre</td>
+                        <td>@Cadete.Domicilio</td>
+                        <td>@Cadete.Telefono</td>
+                        <td>@Html.ActionLink("Eliminar", "Baja_Cadetes", "Cadetes", new{_Id_Cadete = Cadete.Id})</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </article>
+</section>
