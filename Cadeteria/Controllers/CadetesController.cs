@@ -5,18 +5,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+
 using Cadeteria.Models;
+using AutoMapper;
+using Cadeteria.ViewModels;
 
 namespace Cadeteria.Controllers
 {
     public class CadetesController : Controller
     {
         private readonly ILogger<CadetesController> _logger;
-        private static List<Cadete> Lista_Cadete = new List<Cadete>();
 
-        public CadetesController(ILogger<CadetesController> logger)
+        private IMapper _mapper;
+
+        private readonly RepositorioCadetes Repositorio_Cadetes = new RepositorioCadetes();
+
+        public CadetesController(ILogger<CadetesController> logger, IMapper mapper)
         {
             _logger = logger;
+            _mapper = mapper;
         }
 
         public IActionResult Index()
@@ -26,29 +33,25 @@ namespace Cadeteria.Controllers
 
         public IActionResult Mostrar_Cadetes()
         {
-            return View(Lista_Cadete);
+            var Lista_Cadetes_VM = _mapper.Map<List<CadeteViewModel>>(Repositorio_Cadetes.Get_Cadetes());
+            return View(Lista_Cadetes_VM);
         }
 
         public IActionResult Alta_Cadetes()
         {
-            return View();
+            return View(new CadeteViewModel());
         }
 
         [HttpPost]
-        public IActionResult Cargar_Cadete(Cadete _Cadete)
+        public IActionResult Cargar_Cadete(CadeteViewModel _Cadete)
         {
-            Lista_Cadete.Add(_Cadete);
+            Repositorio_Cadetes.Add_Cadete(_mapper.Map<Cadete>(_Cadete));
             return RedirectToAction("Mostrar_Cadetes");
         }
 
         public IActionResult Baja_Cadetes(int _Id_Cadete)
         {
-            Cadete? Cadete_Buscar = Lista_Cadete.Find( Cadete => Cadete.Id == _Id_Cadete);
-
-            if (Cadete_Buscar != null) 
-            {
-                Lista_Cadete.Remove(Cadete_Buscar);
-            }
+            Repositorio_Cadetes.Baja_Cadete(_Id_Cadete);
 
             return RedirectToAction("Mostrar_Cadetes");
         }

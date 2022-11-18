@@ -1,0 +1,23 @@
+@model Cadeteria.ViewModels.PedidoViewModel
+
+@{
+    ViewData["Title"] = "Alta de pedidos";
+}
+
+<section>
+    <article>
+        <form asp-controller="Pedidos" asp-action="Cargar_Pedido" method="POST">
+            <fieldset>
+                <legend>
+                    Insertar un nuevo pedido
+                </legend>
+                <label asp-for="@Model.Observaciones">Observaciones: </label>
+                    <input asp-for="@Model.Observaciones" type="text" required>
+                <label asp-for="@Model.Precio">Precio: </label>
+                    <input asp-for="@Model.Precio" type="number" required>
+
+                <input type="submit" value="Enviar">
+            </fieldset>
+        </form>
+    </article>
+</section>

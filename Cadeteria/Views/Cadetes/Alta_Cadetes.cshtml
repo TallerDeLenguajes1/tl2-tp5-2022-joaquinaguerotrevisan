@@ -1,3 +1,5 @@
+@model Cadeteria.ViewModels.CadeteViewModel
+
 @{
     ViewData["Title"] = "Alta de cadetes";
 }
@@ -8,14 +10,14 @@
             <fieldset>
                 <legend>Insertar un nuevo cadete</legend>
 
-                <label for="nombre">Nombre: </label>
-                    <input name="nombre" type="text" required></input>
+                <label asp-for="@Model.Nombre">Nombre: </label>
+                    <input asp-for="@Model.Nombre" type="text" required></input>
 
-                <label for="telefono">Telefono: </label>
-                    <input name="telefono" type="text" required></input>
+                <label asp-for="@Model.Telefono">Telefono: </label>
+                    <input asp-for="@Model.Telefono" type="tel" required></input>
 
-                <label for="direccion" >Direccion: </label>
-                    <input name="direccion" type="text" required></input>
+                <label asp-for="@Model.Domicilio" >Domicilio: </label>
+                    <input asp-for="@Model.Domicilio" type="text" required></input>
 
                 <input type="submit" value="Enviar">
             </fieldset>

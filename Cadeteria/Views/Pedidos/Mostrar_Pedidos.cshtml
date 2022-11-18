@@ -1,0 +1,33 @@
+@model List<Cadeteria.ViewModels.PedidoViewModel>
+
+@{
+    ViewData["Title"] = "Lista de pedidos";
+}
+
+<section>
+    <article>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Observacion</th>
+                    <th>Estado</th>
+                    <th>Precio</th>
+                    <th>Borrar</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Pedido in @Model)
+                {
+                    <tr>
+                        <td>@Pedido.Id</td>
+                        <td>@Pedido.Observaciones</td>
+                        <td>@Pedido.Estado</td>
+                        <td>@Pedido.Precio</td>
+                        <td>@Html.ActionLink("Eliminar", "Baja_Pedido", "Pedidos", new{_Id_Pedido = Pedido.Id})</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </article>
+</section>

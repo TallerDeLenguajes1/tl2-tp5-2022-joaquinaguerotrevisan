@@ -18,13 +18,17 @@ body {
 }
 
 table{
-  border: 0.5cm, black, solid;
+  border-collapse: collapse;
+  width: 100%;
 }
 
 th{
-  border: 0.3cm, black, solid;
+  background-color: lightgray;
+  font-size: 1.2rem;
+  padding: 0.5rem;
 }
 
-td{
-  border: 0.3cm, black, solid;
+th, td{
+  border: 0.2rem lightgray solid;
+  text-align: center;
 }

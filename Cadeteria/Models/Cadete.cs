@@ -8,7 +8,6 @@ namespace Cadeteria.Models
     public class Cadete
     {
         //ATRIBUTO/S ---
-        static private int Autonumerico = 0;
         private int id;
         private string? nombre;
         private string? domicilio;
@@ -22,8 +21,6 @@ namespace Cadeteria.Models
         // CONSTRUCTOR ---
         public Cadete(string? _Nombre, string? _Domicilio, string? _Telefono)
         {
-            Autonumerico++;
-            this.Id = Autonumerico;
             this.Nombre = _Nombre;
             this.Domicilio = _Domicilio;
             this.Telefono = _Telefono;
@@ -31,8 +28,6 @@ namespace Cadeteria.Models
 
         public Cadete()
         {
-            Autonumerico++;
-            this.Id = Autonumerico;
             this.Nombre = "";
             this.Telefono = "";
             this.Domicilio = "";
