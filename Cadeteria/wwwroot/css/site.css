@@ -32,3 +32,26 @@ th, td{
   border: 0.2rem lightgray solid;
   text-align: center;
 }
+
+form{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem 1rem 1rem 1rem;
+  border: lightgray 0.1rem solid;
+  margin: 1rem 0rem 1rem 0rem;
+  border-radius: 0.5rem;
+}
+
+legend{
+  font-weight: bolder;
+  color: black;
+
+}
+
+input{
+  border: lightgray 0.1rem solid;
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.3rem 0rem 0.3rem 0.3rem;
+}

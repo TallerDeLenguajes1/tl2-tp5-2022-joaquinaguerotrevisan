@@ -1,5 +1,6 @@
 @model Cadeteria.ViewModels.PedidoViewModel
 
+
 @{
     ViewData["Title"] = "Alta de pedidos";
 }
@@ -11,13 +12,19 @@
                 <legend>
                     Insertar un nuevo pedido
                 </legend>
+                
                 <label asp-for="@Model.Observaciones">Observaciones: </label>
                     <input asp-for="@Model.Observaciones" type="text" required>
+                <span class="form-control" asp-validation-for="@Model.Observaciones"></span>
+
                 <label asp-for="@Model.Precio">Precio: </label>
                     <input asp-for="@Model.Precio" type="number" required>
+                <span class="form-control" asp-validation-for="@Model.Precio"></span>
 
                 <input type="submit" value="Enviar">
             </fieldset>
         </form>
     </article>
 </section>
+
+@section Scripts { <partial name="_ValidationScriptsPartial" /> } 
