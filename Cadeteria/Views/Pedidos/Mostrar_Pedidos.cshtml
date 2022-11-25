@@ -14,6 +14,7 @@
                     <th>Estado</th>
                     <th>Precio</th>
                     <th>Borrar</th>
+                    <th>Modificar</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,7 +25,8 @@
                         <td>@Pedido.Observaciones</td>
                         <td>@Pedido.Estado</td>
                         <td>@Pedido.Precio</td>
-                        <td>@Html.ActionLink("Eliminar", "Baja_Pedido", "Pedidos", new{_Id_Pedido = Pedido.Id})</td>
+                        <td>@Html.ActionLink("Eliminar", "Baja_Pedidos", "Pedidos", new{_Id_Pedido = Pedido.Id})</td>
+                        <td>@Html.ActionLink("Modificar", "Modificar_Pedidos", "Pedidos", new{_Id_Pedido = Pedido.Id})</td>
                     </tr>
                 }
             </tbody>

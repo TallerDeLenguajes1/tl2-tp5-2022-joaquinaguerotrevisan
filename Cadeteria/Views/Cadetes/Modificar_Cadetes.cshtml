@@ -1,0 +1,33 @@
+@model Cadeteria.ViewModels.CadeteViewModel
+
+@{
+    ViewData["Title"] = "Modificar cadete";
+}
+
+<section>
+    <article>
+        <form asp-controller="Cadetes" asp-action="Modificar_Cadete_Post" method="POST">
+            <fieldset>
+                <legend>Modificar cadete</legend>
+
+                <label asp-for="@Model.Nombre">Nombre: </label>
+                    <input asp-for="@Model.Nombre" type="text" ></input>
+                <span class="form-control" asp-validation-for="@Model.Nombre" ></span>
+
+                <label asp-for="@Model.Telefono">Telefono: </label>
+                    <input asp-for="@Model.Telefono" type="tel" ></input>
+                <span class="form-control" asp-validation-for="@Model.Telefono" ></span> 
+
+                <label asp-for="@Model.Domicilio" >Domicilio: </label>
+                    <input asp-for="@Model.Domicilio" type="text" ></input>
+                <span class="form-control" asp-validation-for="@Model.Domicilio" ></span>
+
+                @Html.HiddenFor(model=>model.Id); 
+
+                <input type="submit" value="Enviar">
+            </fieldset>
+        </form>           
+    </article>
+</section>
+
+@section Scripts { <partial name="_ValidationScriptsPartial" /> } 

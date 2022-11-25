@@ -56,6 +56,24 @@ namespace Cadeteria.Controllers
             return RedirectToAction("Mostrar_Pedidos");
         }
 
+        public IActionResult Modificar_Pedidos(int _Id_Pedido)
+        {
+            Pedido Pedido_Modificar = Repositorio_Pedido.Buscar_Pedido(_Id_Pedido);
+
+            return View(_mapper.Map<PedidoViewModel>(Pedido_Modificar));
+        }
+
+        [HttpPost]
+        public IActionResult Modificar_Pedido_Post(PedidoViewModel _Pedido)
+        {
+            if (ModelState.IsValid)
+            {
+                Repositorio_Pedido.Modificar_Pedido( _mapper.Map<Pedido>(_Pedido));
+                return RedirectToAction("Mostrar_Pedidos");
+            }
+            return RedirectToAction("Mostrar_Pedidos");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

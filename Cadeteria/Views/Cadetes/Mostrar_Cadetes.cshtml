@@ -14,6 +14,7 @@
                     <th>Domicilio</th>
                     <th>Telefono</th>
                     <th>Borrar</th>
+                    <th>Modificar</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,6 +26,7 @@
                         <td>@Cadete.Domicilio</td>
                         <td>@Cadete.Telefono</td>
                         <td>@Html.ActionLink("Eliminar", "Baja_Cadetes", "Cadetes", new{_Id_Cadete = Cadete.Id})</td>
+                        <td>@Html.ActionLink("Modificar", "Modificar_Cadetes", "Cadetes", new{_Id_Cadete = Cadete.Id})</td>
                     </tr>
                 }
             </tbody>

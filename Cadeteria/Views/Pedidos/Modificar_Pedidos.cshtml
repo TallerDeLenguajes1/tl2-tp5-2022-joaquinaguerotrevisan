@@ -1,0 +1,36 @@
+@model Cadeteria.ViewModels.PedidoViewModel
+
+
+@{
+    ViewData["Title"] = "Modificar pedido";
+}
+
+<section>
+    <article>
+        <form asp-controller="Pedidos" asp-action="Modificar_Pedido_Post" method="POST">
+            <fieldset>
+                <legend>
+                    Modificar pedido
+                </legend>
+                
+                <label asp-for="@Model.Observaciones">Observaciones: </label>
+                    <input asp-for="@Model.Observaciones" type="text">
+                <span class="form-control" asp-validation-for="@Model.Observaciones"></span>
+
+                <label asp-for="@Model.Estado">Estado: </label>
+                    <input asp-for="@Model.Estado" type="checkbox" value="true">
+                <span class="form-control" asp-validation-for="@Model.Estado"></span>
+
+                <label asp-for="@Model.Precio">Precio: </label>
+                    <input asp-for="@Model.Precio" type="number">
+                <span class="form-control" asp-validation-for="@Model.Precio"></span>
+
+                @Html.HiddenFor(model=>model.Id); 
+
+                <input type="submit" value="Enviar">
+            </fieldset>
+        </form>
+    </article>
+</section>
+
+@section Scripts { <partial name="_ValidationScriptsPartial" /> } 

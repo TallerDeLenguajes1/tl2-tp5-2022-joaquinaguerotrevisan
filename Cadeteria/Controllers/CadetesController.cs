@@ -33,8 +33,8 @@ namespace Cadeteria.Controllers
 
         public IActionResult Mostrar_Cadetes()
         {
-            var Lista_Cadetes_VM = _mapper.Map<List<CadeteViewModel>>(Repositorio_Cadetes.Get_Cadetes());
-            return View(Lista_Cadetes_VM);
+            var Lista_Cadetes_Vm = _mapper.Map<List<CadeteViewModel>>(Repositorio_Cadetes.Get_Cadetes());
+            return View(Lista_Cadetes_Vm);
         }
 
         public IActionResult Alta_Cadetes()
@@ -47,6 +47,26 @@ namespace Cadeteria.Controllers
         {
             Repositorio_Cadetes.Add_Cadete(_mapper.Map<Cadete>(_Cadete));
             return RedirectToAction("Mostrar_Cadetes");
+        }
+
+        [HttpPost]
+        public IActionResult Modificar_Cadete_Post(CadeteViewModel _Cadete)
+        {
+            if (ModelState.IsValid)
+            {
+                Repositorio_Cadetes.Modificar_Cadete( _mapper.Map<Cadete>(_Cadete));
+                return RedirectToAction("Mostrar_Cadetes");
+            }
+ 
+            return RedirectToAction("Mostrar_Cadetes");
+        }
+
+        [HttpGet]
+        public IActionResult Modificar_Cadetes(int _Id_Cadete)
+        {
+            Cadete Cadete_Modificar = Repositorio_Cadetes.Buscar_Cadete(_Id_Cadete);
+
+            return View(_mapper.Map<CadeteViewModel>(Cadete_Modificar));
         }
 
         public IActionResult Baja_Cadetes(int _Id_Cadete)
